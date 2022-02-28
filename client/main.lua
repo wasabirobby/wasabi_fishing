@@ -67,7 +67,7 @@ AddEventHandler('wasabi_fishing:startFishing', function()
                         DisableControlAction(0, 24, true)
                         if IsDisabledControlJustReleased(0, 24) then
                             TaskPlayAnim(ped, castDict, 'forehand_ts_md_far', 1.0, -1.0, 1.0, 48, 0, 0, 0, 0)
-                            local skillbar = exports['skillbar']:CreateSkillbar(1, 'medium')
+                            local skillbar = CreateSkillbar(1, 'medium')
                             if skillbar then
                                 ClearPedTasks(ped)
                                 tryFish()
