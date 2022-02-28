@@ -8,22 +8,23 @@ This resource was created as a free interactive fishing script for ESX servers.
 - Chance of fishing rod breaking upon failing skillbar(Can be changed in config.)
 - Configurable fishing rewards(4 by default included)
 - Configurable prices to sell fishing rewards for
+- Ability to fish from boat, pier, or anywhere with a body of water
 - No job requirement
 - Sell shop for fished items
+- 0.00ms on idle
 
 
 ## Installation
 
 - Download this script
-- Download this skillbar: https://github.com/WasabiRobby/skill-bar and re-name resource `skillbar`
-- Put both script in your `resources` directory
+- Put script in your `resources` directory
 
 
 - Import `wasabi_fishing_weight.sql` to your database if using weight based inventory.
 - Import `wasabi_fishing_limit.sql` to your database if using limit based inventory.
 
 
-- Add `ensure wasabi_fishing` and `ensure skillbar` in your `server.cfg`
+- Add `ensure wasabi_fishing` in your `server.cfg`
 
 ### Extra Information
 - Inventory images included in the `InventoryImages` directory
@@ -31,6 +32,8 @@ This resource was created as a free interactive fishing script for ESX servers.
 
 ## Preview
 - Fishing Preview: https://streamable.com/ta6q0m
+
+- Selling Preview: https://streamable.com/dlutv2
 
 
 # Support
