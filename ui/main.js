@@ -35,7 +35,7 @@ window.addEventListener("message",e => {
     let success = checkIsIn(claude,startY,endY)
     currentLevel.amountLeft--;
     if (!success || currentLevel.amountLeft <= 0){
-      $.post("http://wasabi_fishing/finish",JSON.stringify({
+      $.post("https://wasabi_fishing/finish",JSON.stringify({
         success:success
       }));
       needtofinish = true;
@@ -144,7 +144,7 @@ function step(time){
       $(".load-text").fadeOut(300);
       $("#mainCanvas").fadeOut(300,function(){
           ctx.clearRect(0,0,canvas.width,canvas.height);
-          $.post("http://wasabi_fishing/finish",JSON.stringify({
+          $.post("https://wasabi_fishing/finish",JSON.stringify({
           success:false
           }))
         });
