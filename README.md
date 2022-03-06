@@ -6,6 +6,7 @@ This resource was created as a free interactive fishing script for ESX servers.
 - Skill bar based success
 - Full animations and props
 - Chance of fishing rod breaking upon failing skillbar(Can be changed in config.)
+- Configurable random wait time for getting bite on line
 - Configurable fishing rewards(4 by default included)
 - Configurable prices to sell fishing rewards for
 - Ability to fish from boat, pier, or anywhere with a body of water
