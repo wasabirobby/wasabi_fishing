@@ -55,9 +55,6 @@ AddEventHandler('wasabi_fishing:startFishing', function()
                     local idleDict = loadDict('amb@world_human_stand_fishing@idle_a')
                     TaskPlayAnim(ped, castDict, 'forehand_ts_md_far', 1.0, -1.0, 1.0, 48, 0, 0, 0, 0)
                     Wait(3000)
-                   -- while IsEntityPlayingAnim(ped, "mini@tennis", "forehand_ts_md_far", 3) do
-                     --   Wait(0)
-                    --end
                     TaskPlayAnim(ped, idleDict, 'idle_c', 1.0, -1.0, 1.0, 11, 0, 0, 0, 0)
                     while fishing do
                         Wait(0)
@@ -67,6 +64,10 @@ AddEventHandler('wasabi_fishing:startFishing', function()
                         DisableControlAction(0, 24, true)
                         if IsDisabledControlJustReleased(0, 24) then
                             TaskPlayAnim(ped, castDict, 'forehand_ts_md_far', 1.0, -1.0, 1.0, 48, 0, 0, 0, 0)
+                            TriggerEvent('wasabi_fishing:notify', Language['waiting_bite'])
+                            Wait(math.random(Config.timeForBite.min, Config.timeForBite.max))
+                            TriggerEvent('wasabi_fishing:notify', Language['got_bite'])
+                            Wait(1000)
                             local skillbar = CreateSkillbar(1, 'medium')
                             if skillbar then
                                 ClearPedTasks(ped)
