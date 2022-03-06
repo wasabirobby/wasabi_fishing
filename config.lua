@@ -1,6 +1,7 @@
 -----------------For support, scripts, and more----------------
 -----------------https://discord.gg/XJFNyMy3Bv-----------------
 ---------------------------------------------------------------
+local seconds, minutes = 1000, 60000
 Config = {}
 
 Config.OldESX = false -- Using ESX 1.1 or older put true
@@ -15,6 +16,11 @@ Config.Bait = {
 Config.FishingRod = {
     itemName = 'fishingrod', -- Item name of fishing rod
     breakChance = 50 --Chance of breaking pole when failing skillbar (Setting to 0 means never break)
+}
+
+Config.timeForBite = { -- Set min and max random range of time it takes for fish to be on line.
+    min = 2*seconds,
+    max = 20*seconds
 }
 
 Config.Fish = { -- Name of obtainable fish (Must be in item database/table)
@@ -57,6 +63,8 @@ Language = {
     ['sell_fish'] = 'Press [~g~E~w~] To Sell Fish',
     ['kicked'] = 'Nice try, please do not attempt to exploit!',
     ['sold_for'] = 'You sold %sx %s for $%s',
+    ['got_bite'] = 'Your pole has a fish on the line, get ready!',
+    ['waiting_bite'] = 'Please wait for a fish to bite your hook.',
     ['cannot_carry'] = 'You cannot carry reward!'
     
 }
