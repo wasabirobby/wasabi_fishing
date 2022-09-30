@@ -9,7 +9,7 @@ description "ESX Skill Based Fishing"
 
 author 'wasabirobby#5110'
 
-version '1.1.2'
+version '1.1.3'
 
 ui_page 'ui/index.html'
 
