@@ -1,5 +1,5 @@
 -----------------For support, scripts, and more----------------
------------------https://discord.gg/XJFNyMy3Bv-----------------
+--------------- https://discord.gg/wasabiscripts  -------------
 ---------------------------------------------------------------
 
 loadModel = function(model)
