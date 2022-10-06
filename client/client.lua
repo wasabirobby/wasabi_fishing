@@ -1,6 +1,7 @@
 -----------------For support, scripts, and more----------------
 --------------- https://discord.gg/wasabiscripts  -------------
 ---------------------------------------------------------------
+
 ESX = exports['es_extended']:getSharedObject()
 local fishing = false
 
@@ -9,7 +10,7 @@ Citizen.CreateThread(function()
 end)
 
  --Sell Shop Functionality
- Citizen.CreateThread(function()
+Citizen.CreateThread(function()
 	while true do
         local Sleep = 1500
 		local player = PlayerPedId()
