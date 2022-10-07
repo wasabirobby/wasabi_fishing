@@ -5,12 +5,12 @@
 ESX = exports['es_extended']:getSharedObject()
 local fishing = false
 
-Citizen.CreateThread(function()
+CreateThread(function()
     CreateBlip(Config.SellShop, 356, 1, Language['sell_shop_blip'], 0.80)
 end)
 
  --Sell Shop Functionality
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
         local Sleep = 1500
 		local player = PlayerPedId()
@@ -54,7 +54,7 @@ AddEventHandler('wasabi_fishing:startFishing', function()
                     Wait(3000)
                     TaskPlayAnim(ped, idleDict, 'idle_c', 1.0, -1.0, 1.0, 11, 0, 0, 0, 0)
                     while fishing do
-                        Wait(0)
+                        Wait()
                         local unarmed = `WEAPON_UNARMED`
                         SetCurrentPedWeapon(ped, unarmed)
                         ShowHelp(Language['intro_instruction'])
@@ -101,7 +101,6 @@ AddEventHandler('wasabi_fishing:startFishing', function()
         end
     end, Config.Bait.itemName)
 end)
-
 
 RegisterNetEvent('wasabi_fishing:interupt')
 AddEventHandler('wasabi_fishing:interupt', function()
