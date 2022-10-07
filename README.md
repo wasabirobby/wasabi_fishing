@@ -21,8 +21,7 @@ This resource was created as a free interactive fishing script for ESX servers.
 - Put script in your `resources` directory
 
 
-- Import `wasabi_fishing_weight.sql` to your database if using weight based inventory.
-- Import `wasabi_fishing_limit.sql` to your database if using limit based inventory.
+- If using limit system for inventory please set Old ESX config to true otherwise put false
 
 
 - Add `ensure wasabi_fishing` in your `server.cfg`
