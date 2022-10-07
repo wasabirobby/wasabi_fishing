@@ -1,8 +1,11 @@
 -----------------For support, scripts, and more----------------
 --------------- https://discord.gg/wasabiscripts  -------------
 ---------------------------------------------------------------
+
 local seconds, minutes = 1000, 60000
 Config = {}
+
+Config.checkForUpdates = true -- Check for Updates?
 
 Config.OldESX = false -- Using ESX 1.1 or older put true
 
@@ -19,8 +22,8 @@ Config.FishingRod = {
 }
 
 Config.timeForBite = { -- Set min and max random range of time it takes for fish to be on line.
-    min = 2*seconds,
-    max = 20*seconds
+    min = 2 * seconds,
+    max = 20 * seconds
 }
 
 Config.Fish = { -- Name of obtainable fish (Must be in item database/table)
@@ -37,16 +40,10 @@ Config.FishPrices = { -- Price ranges for the items to sell (Must have the same 
     ['anchovy'] = {20, 44}
 }
 
-
-
-
 RegisterNetEvent('wasabi_fishing:notify')
 AddEventHandler('wasabi_fishing:notify', function(message)
-
--- Place notification system info here, ex: exports['mythic_notify']:SendAlert('inform', message)
-ESX.ShowNotification(message)
-
-
+    -- Place notification system info here, ex: exports['mythic_notify']:SendAlert('inform', message)
+    ESX.ShowNotification(message)
 end)
 
 Language = {
@@ -66,5 +63,4 @@ Language = {
     ['got_bite'] = 'Your pole has a fish on the line, get ready!',
     ['waiting_bite'] = 'Please wait for a fish to bite your hook.',
     ['cannot_carry'] = 'You cannot carry reward!'
-    
 }
