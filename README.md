@@ -18,6 +18,9 @@ This resource was created as a free interactive fishing script for ESX servers.
 ## Installation
 
 - Download this script
+
+- Insert proper item sql or ensure items are present that you will be using in the configuration
+
 - Put script in your `resources` directory
 
 
