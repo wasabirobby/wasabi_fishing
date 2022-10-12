@@ -4,30 +4,6 @@
 
 ESX = exports['es_extended']:getSharedObject()
 
-MySQL.ready(function()
-    if Config.OldESX then
-        MySQL.Sync.execute(
-            "INSERT IGNORE INTO `items` (`name`, `label`, `limit`, `rare`, `can_remove`) VALUES " ..
-                "('fishingrod', 'Fishing Rod', 20, 0, 1), " ..
-                "('fishbait', 'Fish Bait', 20, 0, 1), " ..
-                "('anchovy', 'Anchovy', 20, 0, 1), " ..
-                "('trout', 'Trout', 20, 0, 1), " ..
-                "('salmon', 'Salmon', 20, 0, 1), " ..
-                "('tuna', 'Tuna', 40, 0, 1); "
-        )
-    elseif not Config.OldESX then
-        MySQL.Sync.execute(
-            "INSERT IGNORE INTO `items` (`name`, `label`, `weight`, `rare`, `can_remove`) VALUES " ..
-                "('fishingrod', 'Fishing Rod', 20, 0, 1), " ..
-                "('fishbait', 'Fish Bait', 20, 0, 1), " ..
-                "('anchovy', 'Anchovy', 20, 0, 1), " ..
-                "('trout', 'Trout', 20, 0, 1), " ..
-                "('salmon', 'Salmon', 20, 0, 1), " ..
-                "('tuna', 'Tuna', 40, 0, 1); "
-        )
-    end
-end)
-
 ESX.RegisterServerCallback('wasabi_fishing:checkItem', function(source, cb, itemname)
     local xPlayer = ESX.GetPlayerFromId(source)
     local item = xPlayer.getInventoryItem(itemname).count
