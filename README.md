@@ -38,7 +38,7 @@ This resource was created as a free interactive fishing script for ESX servers.
 - You must add the item `fishingrod` and `fishbait` to one of your in-game shops or have a place for your players to obtain.
 
 ## Preview
-- Video: Coming Soon
+https://www.youtube.com/watch?v=kLLPGJIK3Q0
 
 
 # Support
