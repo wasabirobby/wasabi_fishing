@@ -3,31 +3,28 @@
 ---------------------------------------------------------------
 
 fx_version 'cerulean'
-
 game 'gta5'
-
 lua54 'yes'
 
-description "ESX Skill Based Fishing"
-
+description 'Wasabi ESX Skill Based Fishing'
 author 'wasabirobby#5110'
 
 version '1.1.5'
 
-ui_page 'ui/index.html'
-
-files {
-    'ui/index.html',
-    'ui/style.css',
-    'ui/main.js'
-}
-
 client_scripts {
-	'client/**.lua'
+	'client/*.lua'
 }
 
 server_scripts {
-	'server/**.lua'
+	'server/*.lua'
 }
 
-shared_script 'config.lua'
+shared_scripts {
+    '@ox_lib/init.lua',
+    'configuration/*.lua'
+}
+
+dependencies {
+    'es_extended',
+    'ox_lib'
+}
