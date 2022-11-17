@@ -9,7 +9,7 @@ lua54 'yes'
 description 'Wasabi ESX Skill Based Fishing'
 author 'wasabirobby#5110'
 
-version '2.0.1'
+version '2.0.2'
 
 client_scripts {
 	'client/*.lua'
