@@ -63,7 +63,7 @@ AddEventHandler('wasabi_fishing:startFishing', function()
             if not fishing then
                 fishing = true
                 local model = `prop_fishing_rod_01`
-                lib.requestModel(model, timeout)
+                lib.requestModel(model, 100)
                 local pole = CreateObject(model, GetEntityCoords(cache.ped), true, false, false)
                 AttachEntityToEntity(pole, cache.ped, GetPedBoneIndex(cache.ped, 18905), 0.1, 0.05, 0, 80.0, 120.0, 160.0, true, true, false, true, 1, true)
                 SetModelAsNoLongerNeeded(model)
