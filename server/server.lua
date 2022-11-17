@@ -84,9 +84,11 @@ AddEventHandler('wasabi_fishing:sellFish', function()
             for j=1, xPlayer.getInventoryItem(Config.fish[i].item).count do
                 rewardAmount = rewardAmount + math.random(Config.fish[i].price[1], Config.fish[i].price[2])
             end
-            xPlayer.addMoney(rewardAmount)
-            TriggerClientEvent('wasabi_fishing:notify', source, Strings.sold_for, (Strings.sold_for_desc):format(xPlayer.getInventoryItem(Config.fish[i].item).count, xPlayer.getInventoryItem(Config.fish[i].item).label, addCommas(rewardAmount)), 'success')
-            xPlayer.removeInventoryItem(Config.fish[i].item, xPlayer.getInventoryItem(Config.fish[i].item).count)
+            if rewardAmount > 0 then
+                xPlayer.addMoney(rewardAmount)
+                TriggerClientEvent('wasabi_fishing:notify', source, Strings.sold_for, (Strings.sold_for_desc):format(xPlayer.getInventoryItem(Config.fish[i].item).count, xPlayer.getInventoryItem(Config.fish[i].item).label, addCommas(rewardAmount)), 'success')
+                xPlayer.removeInventoryItem(Config.fish[i].item, xPlayer.getInventoryItem(Config.fish[i].item).count)
+            end
         end
     end
 end)
