@@ -31,6 +31,6 @@ tryFish = function(data)
     TriggerServerEvent('wasabi_fishing:tryFish', data)
 end
 
-FishingSellItems = function(distance)
-	TriggerServerEvent('wasabi_fishing:sellFish', distance)
+FishingSellItems = function()
+	TriggerServerEvent('wasabi_fishing:sellFish')
 end
