@@ -31,7 +31,7 @@ if Config.sellShop.enabled then
                     textUI = true
                 end
                 if IsControlJustReleased(0, 38) then
-                    FishingSellItems(dist)
+                    FishingSellItems()
                 end
             elseif dist >= 1.9 and textUI then
                 sleep = 0

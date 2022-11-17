@@ -65,26 +65,29 @@ AddEventHandler('wasabi_fishing:tryFish', function(data)
 end)
 
 RegisterServerEvent('wasabi_fishing:sellFish')
-AddEventHandler('wasabi_fishing:sellFish', function(distance)
-    if distance ~= nil then
-        if distance <= 3 then
-            for i=1, #Config.fish do
-                local xPlayer = ESX.GetPlayerFromId(source)
-                if xPlayer.getInventoryItem(Config.fish[i].item).count > 0 then
-                    local rewardAmount = 0
-                    for j=1, xPlayer.getInventoryItem(Config.fish[i].item).count do
-                        rewardAmount = rewardAmount + math.random(Config.fish[i].price[1], Config.fish[i].price[2])
-                    end
-                    xPlayer.addMoney(rewardAmount)
-                    TriggerClientEvent('wasabi_fishing:notify', source, Strings.sold_for, (Strings.sold_for_desc):format(xPlayer.getInventoryItem(Config.fish[i].item).count, xPlayer.getInventoryItem(Config.fish[i].item).label, addCommas(rewardAmount)), 'success')
-                    xPlayer.removeInventoryItem(Config.fish[i].item, xPlayer.getInventoryItem(Config.fish[i].item).count)
-                end
-            end
-        else
-            xPlayer.kick(Strings.kicked)
-        end
-    else
+AddEventHandler('wasabi_fishing:sellFish', function()
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local playerPed = GetPlayerPed(source)
+    local playerCoord = GetEntityCoords(playerPed)
+    local distance = #(playerCoord - Config.sellShop.coords)
+    if distance == nil then
         xPlayer.kick(Strings.kicked)
+        return
+    end
+    if distance > 3 then
+        xPlayer.kick(Strings.kicked)
+        return
+    end
+    for i=1, #Config.fish do
+        if xPlayer.getInventoryItem(Config.fish[i].item).count > 0 then
+            local rewardAmount = 0
+            for j=1, xPlayer.getInventoryItem(Config.fish[i].item).count do
+                rewardAmount = rewardAmount + math.random(Config.fish[i].price[1], Config.fish[i].price[2])
+            end
+            xPlayer.addMoney(rewardAmount)
+            TriggerClientEvent('wasabi_fishing:notify', source, Strings.sold_for, (Strings.sold_for_desc):format(xPlayer.getInventoryItem(Config.fish[i].item).count, xPlayer.getInventoryItem(Config.fish[i].item).label, addCommas(rewardAmount)), 'success')
+            xPlayer.removeInventoryItem(Config.fish[i].item, xPlayer.getInventoryItem(Config.fish[i].item).count)
+        end
     end
 end)
 
