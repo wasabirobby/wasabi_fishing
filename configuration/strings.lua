@@ -1,6 +1,7 @@
 -----------------For support, scripts, and more----------------
 --------------- https://discord.gg/wasabiscripts  -------------
 ---------------------------------------------------------------
+
 Strings = {
     intro_instruction = 'Press ~INPUT_ATTACK~ to cast line, ~INPUT_FRONTEND_RRIGHT~ to cancel.',
     rod_broke = 'Rod Snapped',

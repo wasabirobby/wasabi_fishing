@@ -6,7 +6,6 @@ local seconds, minutes = 1000, 60000
 Config = {}
 
 Config.checkForUpdates = true -- Check for updates?
-Config.oldESX = false -- Using ESX 1.1 or older put true
 
 Config.sellShop = {
     enabled = true,
@@ -37,20 +36,23 @@ Config.fish = {
     { item = 'anchovy', price = {100, 190}, difficulty = {'easy'} },
 }
 
-RegisterNetEvent('wasabi_fishing:notify')
-AddEventHandler('wasabi_fishing:notify', function(title, message, msgType)
-    -- Place notification system info here, ex: exports['mythic_notify']:SendAlert('inform', message)
-    if not msgType then
-        lib.notify({
-            title = title,
-            description = message,
-            type = 'inform'
-        })
+Config.esxImport = function()
+    if IsDuplicityVersion() then
+        --[[ SERVER ]]
+        return exports['es_extended']:getSharedObject()
     else
-        lib.notify({
-            title = title,
-            description = message,
-            type = msgType
-        })
+        --[[ CLIENT ]]
+        return exports['es_extended']:getSharedObject()
     end
+end
+
+-- Place notification system info here, ex: exports['mythic_notify']:SendAlert('inform', message)
+RegisterNetEvent('wasabi_fishing:notify', function(title, message, msgType)
+    msgType = msgType or 'inform'
+
+    lib.notify({
+        title = title,
+        description = message,
+        type = msgType
+    })
 end)

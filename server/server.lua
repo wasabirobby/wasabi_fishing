@@ -2,8 +2,7 @@
 --------------- https://discord.gg/wasabiscripts  -------------
 ---------------------------------------------------------------
 
-ESX = exports['es_extended']:getSharedObject()
-
+ESX = Config.esxImport()
 
 lib.callback.register('wasabi_fishing:checkItem', function(source, itemname)
     local xPlayer = ESX.GetPlayerFromId(source)
@@ -20,15 +19,13 @@ lib.callback.register('wasabi_fishing:getFishData', function(source)
     return data
 end)
 
-RegisterServerEvent('wasabi_fishing:rodBroke')
-AddEventHandler('wasabi_fishing:rodBroke', function()
+RegisterNetEvent('wasabi_fishing:rodBroke', function()
     local xPlayer = ESX.GetPlayerFromId(source)
     xPlayer.removeInventoryItem(Config.fishingRod.itemName, 1)
     TriggerClientEvent('wasabi_fishing:interupt', source)
 end)
 
-RegisterServerEvent('wasabi_fishing:tryFish')
-AddEventHandler('wasabi_fishing:tryFish', function(data)
+RegisterNetEvent('wasabi_fishing:tryFish', function(data)
     local xPlayer = ESX.GetPlayerFromId(source)
     local xPole = xPlayer.getInventoryItem(Config.fishingRod.itemName).count
     local xBait = xPlayer.getInventoryItem(Config.bait.itemName).count
@@ -40,7 +37,7 @@ AddEventHandler('wasabi_fishing:tryFish', function(data)
         end
         local awardItem = data.item
         local awardLabel = ESX.GetItemLabel(awardItem)
-        if Config.OldESX then
+        if OldESX then
             local limitItem = xPlayer.getInventoryItem(awardItem)
             if limitItem.limit == -1 or (limitItem.count + 1) <= limitItem.limit then
                 xPlayer.addInventoryItem(awardItem, 1)
@@ -64,8 +61,7 @@ AddEventHandler('wasabi_fishing:tryFish', function(data)
     end
 end)
 
-RegisterServerEvent('wasabi_fishing:sellFish')
-AddEventHandler('wasabi_fishing:sellFish', function()
+RegisterNetEvent('wasabi_fishing:sellFish', function()
     local xPlayer = ESX.GetPlayerFromId(source)
     local playerPed = GetPlayerPed(source)
     local playerCoord = GetEntityCoords(playerPed)
@@ -96,8 +92,3 @@ end)
 ESX.RegisterUsableItem(Config.fishingRod.itemName, function(source)
     TriggerClientEvent('wasabi_fishing:startFishing', source)
 end)
-
-addCommas = function(n)
-	return tostring(math.floor(n)):reverse():gsub("(%d%d%d)","%1,")
-								  :gsub(",(%-?)$","%1"):reverse()
-end
