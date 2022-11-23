@@ -2,7 +2,7 @@
 --------------- https://discord.gg/wasabiscripts  -------------
 ---------------------------------------------------------------
 
-ESX = exports['es_extended']:getSharedObject()
+ESX = Config.esxImport()
 local fishing = false
 
 if Config.sellShop.enabled then
@@ -50,8 +50,7 @@ if Config.sellShop.enabled then
     end)
 end
 
-RegisterNetEvent('wasabi_fishing:startFishing')
-AddEventHandler('wasabi_fishing:startFishing', function()
+RegisterNetEvent('wasabi_fishing:startFishing', function()
     if IsPedInAnyVehicle(cache.ped) or IsPedSwimming(cache.ped) then
         TriggerEvent('wasabi_fishing:notify', Strings.cannot_perform, Strings.cannot_perform_desc, 'error')
         return
@@ -120,8 +119,7 @@ AddEventHandler('wasabi_fishing:startFishing', function()
     end
 end)
 
-RegisterNetEvent('wasabi_fishing:interupt')
-AddEventHandler('wasabi_fishing:interupt', function()
+RegisterNetEvent('wasabi_fishing:interupt', function()
     fishing = false
     ClearPedTasks(cache.ped)
 end)
