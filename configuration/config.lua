@@ -6,7 +6,6 @@ local seconds, minutes = 1000, 60000
 Config = {}
 
 Config.checkForUpdates = true -- Check for updates?
-Config.oldESX = false -- Using ESX 1.1 or older put true
 
 Config.sellShop = {
     enabled = true,
@@ -31,10 +30,10 @@ Config.timeForBite = { -- Set min and max random range of time it takes for fish
 }
 
 Config.fish = {
-    { item = 'tuna', price = {300, 550}, difficulty = {'medium', 'easy', 'easy'} }, -- name is the item name of the fish(must be in DB of items) / Price is the range of price it will sell to fish buyer / difficulty is how many & how hard skillcheck is
-    { item = 'salmon', price = {235, 300}, difficulty = {'medium', 'easy'} },
-    { item = 'trout', price = {190, 235}, difficulty = {'easy', 'easy'} },
-    { item = 'anchovy', price = {100, 190}, difficulty = {'easy'} },
+    { item = 'tuna', label = 'Tuna', price = {300, 550}, difficulty = {'medium', 'easy', 'easy'} }, -- name is the item name of the fish(must be in DB of items) / Price is the range of price it will sell to fish buyer / difficulty is how many & how hard skillcheck is
+    { item = 'salmon', label = 'Salmon', price = {235, 300}, difficulty = {'medium', 'easy'} },
+    { item = 'trout', label = 'Trout', price = {190, 235}, difficulty = {'easy', 'easy'} },
+    { item = 'anchovy', label = 'Anchovy', price = {100, 190}, difficulty = {'easy'} },
 }
 
 RegisterNetEvent('wasabi_fishing:notify')
