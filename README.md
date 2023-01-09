@@ -1,8 +1,9 @@
 # wasabi_fishing
 
-This resource was created as a free interactive fishing script for ESX servers.
+This resource was created as a free interactive fishing script for ESX/QBCore servers.
 
 ## Features
+- Out of the box compatible with ESX and QBCore
 - Optimized 0.00ms usage on idle
 - Skill-check based success
 - Full animations and props
@@ -16,7 +17,7 @@ This resource was created as a free interactive fishing script for ESX servers.
 - Fully configurable fish buyer to sell fish
 
 ## Dependencies
-- es_extended
+- es_extended OR qb-core
 - ox_lib - https://github.com/overextended/ox_lib/releases
 
 
@@ -24,17 +25,15 @@ This resource was created as a free interactive fishing script for ESX servers.
 
 - Make sure you have dependencies
 
-- Insert proper item sql or ensure items are present that you will be using in the configuration
+- Make sure items are added to server(Check `Inventory_Items` directory for images/examples
 
 - Put script in your `resources` directory
-
-- If using limit system for inventory please set Old ESX config to true otherwise put false
 
 - Add `ensure wasabi_fishing` in your `server.cfg` (*After* dependencies)
 
 ### Extra Information
 - Make sure `ox_lib` starts before `wasabi_fishing`
-- Inventory images included in the `InventoryImages` directory
+- Inventory images included in the `Inventory_Items/InventoryImages` directory
 - You must add the item `fishingrod` and `fishbait` to one of your in-game shops or have a place for your players to obtain.
 
 ## Preview
