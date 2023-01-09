@@ -1,13 +1,11 @@
 -----------------For support, scripts, and more----------------
 --------------- https://discord.gg/wasabiscripts  -------------
 ---------------------------------------------------------------
-
-ESX = exports['es_extended']:getSharedObject()
 local fishing = false
 
 if Config.sellShop.enabled then
     CreateThread(function()
-        createBlip(Config.sellShop.coords, 356, 1, Strings.sell_shop_blip, 0.80)
+        CreateBlip(Config.sellShop.coords, 356, 1, Strings.sell_shop_blip, 0.80)
         local ped, pedSpawned
         local textUI
         while true do
@@ -58,7 +56,7 @@ AddEventHandler('wasabi_fishing:startFishing', function()
     end
     local hasItem = lib.callback.await('wasabi_fishing:checkItem', 100, Config.bait.itemName)
     if hasItem then
-        local water, waterLoc = waterCheck()
+        local water, waterLoc = WaterCheck()
         if water then
             if not fishing then
                 fishing = true
@@ -76,7 +74,7 @@ AddEventHandler('wasabi_fishing:startFishing', function()
                     Wait()
                     local unarmed = `WEAPON_UNARMED`
                     SetCurrentPedWeapon(ped, unarmed)
-                    showHelp(Strings.intro_instruction)
+                    ShowHelp(Strings.intro_instruction)
                     DisableControlAction(0, 24, true)
                     if IsDisabledControlJustReleased(0, 24) then
                         TaskPlayAnim(cache.ped, 'mini@tennis', 'forehand_ts_md_far', 1.0, -1.0, 1.0, 48, 0, 0, 0, 0)
@@ -87,7 +85,7 @@ AddEventHandler('wasabi_fishing:startFishing', function()
                         local fishData = lib.callback.await('wasabi_fishing:getFishData', 100)
                         if lib.skillCheck(fishData.difficulty) then
                             ClearPedTasks(cache.ped)
-                            tryFish(fishData)
+                            TryFish(fishData)
                             TaskPlayAnim(cache.ped, 'amb@world_human_stand_fishing@idle_a', 'idle_c', 1.0, -1.0, 1.0, 11, 0, 0, 0, 0)
                         else
                             local breakChance = math.random(1,100)
