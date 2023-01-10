@@ -43,6 +43,7 @@ end)
 
 RegisterServerEvent('wasabi_fishing:sellFish')
 AddEventHandler('wasabi_fishing:sellFish', function()
+    print('heller')
     local playerPed = GetPlayerPed(source)
     local playerCoord = GetEntityCoords(playerPed)
     local distance = #(playerCoord - Config.sellShop.coords)
