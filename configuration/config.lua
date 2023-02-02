@@ -6,6 +6,7 @@ local seconds, minutes = 1000, 60000
 Config = {}
 
 Config.checkForUpdates = true -- Check for updates?
+Config.oldESX = false -- Nothing to do with qb / Essentially when set to true it disables the check of if player can carry item
 
 Config.sellShop = {
     enabled = true,
