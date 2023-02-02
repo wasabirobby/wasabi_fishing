@@ -31,8 +31,18 @@ AddEventHandler('wasabi_fishing:tryFish', function(data)
             RemoveItem(source, Config.bait.itemName, 1)
             TriggerClientEvent('wasabi_fishing:notify', source, Strings.bait_lost, Strings.bait_lost_desc, 'error')
         end
-        AddItem(source, data.item, 1)
-        TriggerClientEvent('wasabi_fishing:notify', source, Strings.fish_success, string.format(Strings.fish_success_desc, data.label), 'success')
+	if Framework == 'esx' and not Config.oldESX then
+	    local player = GetPlayer(source)
+	    if player.canCarryItem(data.item, 1) then
+	        AddItem(source, data.item, 1)
+		TriggerClientEvent('wasabi_fishing:notify', source, Strings.fish_success, string.format(Strings.fish_success_desc, data.label), 'success')
+	    else
+                TriggerClientEvent('wasabi_fishing:notify', source, Strings.cannot_carry, Strings.cannot_carry_desc, 'error')
+	    end
+	else
+            AddItem(source, data.item, 1)
+            TriggerClientEvent('wasabi_fishing:notify', source, Strings.fish_success, string.format(Strings.fish_success_desc, data.label), 'success')
+        end
     elseif xPole > 0 and xBait < 1 then
         TriggerClientEvent('wasabi_fishing:interupt', source)
         TriggerClientEvent('wasabi_fishing:notify', source, Strings.no_bait, Strings.no_bait_desc, 'error')
