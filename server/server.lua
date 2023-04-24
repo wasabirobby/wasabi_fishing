@@ -1,6 +1,11 @@
 -----------------For support, scripts, and more----------------
 --------------- https://discord.gg/wasabiscripts  -------------
 ---------------------------------------------------------------
+local addCommas = function(n)
+	return tostring(math.floor(n)):reverse():gsub("(%d%d%d)","%1,")
+								  :gsub(",(%-?)$","%1"):reverse()
+end
+
 lib.callback.register('wasabi_fishing:checkItem', function(source, itemname)
     local item = HasItem(source, itemname)
     if item >= 1 then
@@ -15,14 +20,12 @@ lib.callback.register('wasabi_fishing:getFishData', function(source)
     return data
 end)
 
-RegisterServerEvent('wasabi_fishing:rodBroke')
-AddEventHandler('wasabi_fishing:rodBroke', function()
+RegisterNetEvent('wasabi_fishing:rodBroke', function()
     RemoveItem(source, Config.fishingRod.itemName, 1)
     TriggerClientEvent('wasabi_fishing:interupt', source)
 end)
 
-RegisterServerEvent('wasabi_fishing:tryFish')
-AddEventHandler('wasabi_fishing:tryFish', function(data)
+RegisterNetEvent('wasabi_fishing:tryFish', function(data)
     local xPole = HasItem(source, Config.fishingRod.itemName)
     local xBait = HasItem(source, Config.bait.itemName)
     if xPole > 0 and xBait > 0 then
@@ -51,8 +54,7 @@ AddEventHandler('wasabi_fishing:tryFish', function(data)
     end
 end)
 
-RegisterServerEvent('wasabi_fishing:sellFish')
-AddEventHandler('wasabi_fishing:sellFish', function()
+RegisterNetEvent('wasabi_fishing:sellFish', function()
     local playerPed = GetPlayerPed(source)
     local playerCoord = GetEntityCoords(playerPed)
     local distance = #(playerCoord - Config.sellShop.coords)
@@ -82,8 +84,3 @@ end)
 RegisterUsableItem(Config.fishingRod.itemName, function(source)
     TriggerClientEvent('wasabi_fishing:startFishing', source)
 end)
-
-addCommas = function(n)
-	return tostring(math.floor(n)):reverse():gsub("(%d%d%d)","%1,")
-								  :gsub(",(%-?)$","%1"):reverse()
-end
