@@ -68,10 +68,10 @@ end
 function HasItem(source, item)
     local player = GetPlayer(source)
     local item = player.Functions.GetItemByName(item)
-    if item ~= nil then 
-        return item.amount
+    if GetResourceState('ox_inventory') == 'started' then
+        return item?.count or 0
     else
-        return 0
+        return item?.amount or 0
     end
 end
 
