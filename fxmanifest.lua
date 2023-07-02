@@ -6,7 +6,7 @@ fx_version 'cerulean'
 game 'gta5'
 lua54 'yes'
 
-version '2.0.6'
+version '2.0.7'
 author 'wasabirobby'
 description 'Wasabi ESX/QBCore Skill Based Fishing'
 
