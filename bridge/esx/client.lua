@@ -11,11 +11,11 @@ RegisterNetEvent('esx:playerLoaded', function(xPlayer)
 end)
 
 RegisterNetEvent('esx:onPlayerSpawn', function()
-    TriggerEvent('wasabi_bridge:onPlayerSpawn')
+    TriggerEvent('wasabi_fishing:onPlayerSpawn')
 end)
 
 AddEventHandler('esx:onPlayerDeath', function(data)
-    TriggerEvent('wasabi_bridge:onPlayerDeath')
+    TriggerEvent('wasabi_fishing:onPlayerDeath')
 end)
 
 RegisterNetEvent('esx:onPlayerLogout', function()

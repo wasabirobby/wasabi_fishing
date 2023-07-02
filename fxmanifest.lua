@@ -7,7 +7,7 @@ game 'gta5'
 lua54 'yes'
 
 version '2.0.6'
-author 'wasabirobby#5110'
+author 'wasabirobby'
 description 'Wasabi ESX/QBCore Skill Based Fishing'
 
 shared_scripts { '@ox_lib/init.lua', 'configuration/*.lua' }

@@ -24,12 +24,12 @@ AddEventHandler('gameEventTriggered', function(event, data)
 	if not IsPedAPlayer(victim) then return end
 	local player = PlayerId()
 	if victimDied and NetworkGetPlayerIndexFromPed(victim) == player and (IsPedDeadOrDying(victim, true) or IsPedFatallyInjured(victim))  then
-        TriggerEvent('wasabi_bridge:onPlayerDeath')
+        TriggerEvent('wasabi_fishing:onPlayerDeath')
 	end
 end)
 
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
-    TriggerEvent('wasabi_bridge:onPlayerSpawn')
+    TriggerEvent('wasabi_fishing:onPlayerSpawn')
 end)
 
 RegisterNetEvent('QBCore:Player:SetPlayerData', function(newPlayerData)
