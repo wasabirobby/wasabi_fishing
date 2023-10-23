@@ -27,5 +27,7 @@ Strings = {
     waiting_bite = 'Awaiting Bite',
     waiting_bite_desc = 'Please wait for a fish to bite your hook.',
     cannot_carry = 'Cannot Carry',
-    cannot_carry_desc = 'You cannot carry reward!'
+    cannot_carry_desc = 'You cannot carry reward!',
+    no_fish = 'Fish store',
+    no_fish_desc = 'Sorry but it seems like u don\'t have any fish for sale'
 }

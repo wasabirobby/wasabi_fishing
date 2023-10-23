@@ -40,17 +40,9 @@ Config.fish = {
 RegisterNetEvent('wasabi_fishing:notify')
 AddEventHandler('wasabi_fishing:notify', function(title, message, msgType)
     -- Place notification system info here, ex: exports['mythic_notify']:SendAlert('inform', message)
-    if not msgType then
-        lib.notify({
-            title = title,
-            description = message,
-            type = 'inform'
-        })
-    else
-        lib.notify({
-            title = title,
-            description = message,
-            type = msgType
-        })
-    end
+   lib.notify({
+        title = title,
+        description = message,
+        type = msgType or 'inform'
+    })
 end)
