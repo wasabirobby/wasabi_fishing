@@ -2,8 +2,8 @@
 --------------- https://discord.gg/wasabiscripts  -------------
 ---------------------------------------------------------------
 local addCommas = function(n)
-	return tostring(math.floor(n)):reverse():gsub("(%d%d%d)","%1,")
-								  :gsub(",(%-?)$","%1"):reverse()
+    return tostring(math.floor(n)):reverse():gsub("(%d%d%d)", "%1,")
+        :gsub(",(%-?)$", "%1"):reverse()
 end
 
 lib.callback.register('wasabi_fishing:checkItem', function(source, itemname)
@@ -29,22 +29,25 @@ RegisterNetEvent('wasabi_fishing:tryFish', function(data)
     local xPole = HasItem(source, Config.fishingRod.itemName)
     local xBait = HasItem(source, Config.bait.itemName)
     if xPole > 0 and xBait > 0 then
-        local chance = math.random(1,100)
+        local chance = math.random(1, 100)
         if chance <= Config.bait.loseChance then
             RemoveItem(source, Config.bait.itemName, 1)
             TriggerClientEvent('wasabi_fishing:notify', source, Strings.bait_lost, Strings.bait_lost_desc, 'error')
         end
-	if Framework == 'esx' and not Config.oldESX then
-	    local player = GetPlayer(source)
-	    if player.canCarryItem(data.item, 1) then
-	        AddItem(source, data.item, 1)
-		TriggerClientEvent('wasabi_fishing:notify', source, Strings.fish_success, string.format(Strings.fish_success_desc, data.label), 'success')
-	    else
-                TriggerClientEvent('wasabi_fishing:notify', source, Strings.cannot_carry, Strings.cannot_carry_desc, 'error')
-	    end
-	else
+        if Framework == 'esx' and not Config.oldESX then
+            local player = GetPlayer(source)
+            if player.canCarryItem(data.item, 1) then
+                AddItem(source, data.item, 1)
+                TriggerClientEvent('wasabi_fishing:notify', source, Strings.fish_success,
+                    string.format(Strings.fish_success_desc, data.label), 'success')
+            else
+                TriggerClientEvent('wasabi_fishing:notify', source, Strings.cannot_carry, Strings.cannot_carry_desc,
+                    'error')
+            end
+        else
             AddItem(source, data.item, 1)
-            TriggerClientEvent('wasabi_fishing:notify', source, Strings.fish_success, string.format(Strings.fish_success_desc, data.label), 'success')
+            TriggerClientEvent('wasabi_fishing:notify', source, Strings.fish_success,
+                string.format(Strings.fish_success_desc, data.label), 'success')
         end
     elseif xPole > 0 and xBait < 1 then
         TriggerClientEvent('wasabi_fishing:interupt', source)
@@ -66,15 +69,18 @@ RegisterNetEvent('wasabi_fishing:sellFish', function()
         KickPlayer(source, Strings.kicked)
         return
     end
-    for i=1, #Config.fish do
+    for i = 1, #Config.fish do
+        if HasItem(source, Config.fish[i].item) == 0 then return TriggerClientEvent('wasabi_fishing:notify', source, Strings.no_fish, Strings.no_fish_desc, 'error') end
         if HasItem(source, Config.fish[i].item) > 0 then
             local rewardAmount = 0
-            for j=1, HasItem(source, Config.fish[i].item) do
+            for j = 1, HasItem(source, Config.fish[i].item) do
                 rewardAmount = rewardAmount + math.random(Config.fish[i].price[1], Config.fish[i].price[2])
             end
             if rewardAmount > 0 then
                 AddMoney(source, 'money', rewardAmount)
-                TriggerClientEvent('wasabi_fishing:notify', source, Strings.sold_for, (Strings.sold_for_desc):format(HasItem(source, Config.fish[i].item), Config.fish[i].label, addCommas(rewardAmount)), 'success')
+                TriggerClientEvent('wasabi_fishing:notify', source, Strings.sold_for,
+                    (Strings.sold_for_desc):format(HasItem(source, Config.fish[i].item), Config.fish[i].label,
+                        addCommas(rewardAmount)), 'success')
                 RemoveItem(source, Config.fish[i].item, HasItem(source, Config.fish[i].item))
             end
         end
