@@ -84,10 +84,10 @@ RegisterNetEvent('wasabi_fishing:startFishing', function()
                         Wait(math.random(Config.timeForBite.min, Config.timeForBite.max))
                         TriggerEvent('wasabi_fishing:notify', Strings.got_bite, Strings.got_bite_desc, 'inform')
                         Wait(1000)
-                        local fishData = lib.callback.await('wasabi_fishing:getFishData', 100)
-                        if lib.skillCheck(fishData.difficulty) then
+                        local fishIndex = math.random(#Config.fish)
+                        if lib.skillCheck(Config.fish[fishIndex].difficulty) then
                             ClearPedTasks(cache.ped)
-                            TryFish(fishData)
+                            TryFish(fishIndex)
                             TaskPlayAnim(cache.ped, 'amb@world_human_stand_fishing@idle_a', 'idle_c', 1.0, -1.0, 1.0, 11, 0, 0, 0, 0)
                         else
                             local breakChance = math.random(1,100)

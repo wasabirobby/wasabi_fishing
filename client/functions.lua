@@ -27,8 +27,8 @@ CreateBlip = function(coords, sprite, colour, text, scale)
     return blip
 end
 
-TryFish = function(data)
-    TriggerServerEvent('wasabi_fishing:tryFish', data)
+TryFish = function(index)
+    TriggerServerEvent('wasabi_fishing:tryFish', index)
 end
 
 FishingSellItems = function()
