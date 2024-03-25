@@ -15,17 +15,17 @@ lib.callback.register('wasabi_fishing:checkItem', function(source, itemname)
     end
 end)
 
-lib.callback.register('wasabi_fishing:getFishData', function(source)
-    local data = Config.fish[math.random(#Config.fish)]
-    return data
-end)
-
 RegisterNetEvent('wasabi_fishing:rodBroke', function()
     RemoveItem(source, Config.fishingRod.itemName, 1)
     TriggerClientEvent('wasabi_fishing:interupt', source)
 end)
 
-RegisterNetEvent('wasabi_fishing:tryFish', function(data)
+RegisterNetEvent('wasabi_fishing:tryFish', function(index)
+    if type(index) ~= "number" then return end
+
+    local data = Config.fish[index]
+    if data == nil then return end
+
     local xPole = HasItem(source, Config.fishingRod.itemName)
     local xBait = HasItem(source, Config.bait.itemName)
     if xPole > 0 and xBait > 0 then
